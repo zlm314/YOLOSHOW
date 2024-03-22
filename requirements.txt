@@ -5,6 +5,7 @@ PyYAML
 scipy
 tqdm
 protobuf
+opencv-python==4.6.0.66 
 
 # Logging -------------------------------------
 tensorboard
