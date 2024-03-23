@@ -467,6 +467,7 @@ class YOLOSHOW(formType, baseType, Ui_mainWindow):
 
     # 选择照片/视频 并展示
     def selectFile(self):
+        self.fps_label.setText('--')
         # 获取上次选择文件的路径
         config_file = f'{self.current_workpath}/config/file.json'
         config = json.load(open(config_file, 'r', encoding='utf-8'))
@@ -501,6 +502,7 @@ class YOLOSHOW(formType, baseType, Ui_mainWindow):
 
     # 选择摄像头
     def selectWebcam(self):
+        self.fps_label.setText('--')
         try:
             # get the number of local cameras
             cam_num, cams = Camera().get_cam_num()
@@ -527,6 +529,7 @@ class YOLOSHOW(formType, baseType, Ui_mainWindow):
 
     # 调用网络摄像头
     def actionWebcam(self, cam):
+        self.fps_label.setText('--')
         self.showStatus(f'Loading camera：Camera_{cam}')
         self.thread = WebcamThread(cam)
         self.thread.changePixmap.connect(lambda x: self.showImg(x, self.main_leftbox, 'img'))
@@ -535,6 +538,7 @@ class YOLOSHOW(formType, baseType, Ui_mainWindow):
 
     # 选择文件夹
     def selectFolder(self):
+        self.fps_label.setText('--')
         config_file = f'{self.current_workpath}/config/folder.json'
         config = json.load(open(config_file, 'r', encoding='utf-8'))
         folder_path = config['folder_path']
